@@ -26,63 +26,95 @@ export default function Swipe() {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-4 pb-24" style={{backgroundColor: "#0077b6"}}>
+    <div style={{
+      minHeight: "100vh",
+      backgroundColor: "#0077b6",
+      display: "flex",
+      flexDirection: "column",
+      alignItems: "center",
+      justifyContent: "center",
+      padding: "16px",
+      paddingBottom: "100px"
+    }}>
 
       {/* Header */}
-      <div className="text-center mb-6">
-        <h1 className="text-3xl font-bold" style={{color: "#fda4af"}}>GYMatch</h1>
-        <p className="text-sm" style={{color: "#e0f7ff"}}>Personas en tu gimnasio</p>
+      <div style={{textAlign: "center", marginBottom: "24px"}}>
+        <h1 style={{fontSize: "32px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
+        <p style={{fontSize: "14px", color: "#e0f7ff", margin: "4px 0 0"}}>Personas en tu gimnasio</p>
       </div>
 
       {/* Notificacion match */}
       {match && (
-        <div className="fixed top-6 left-0 right-0 flex justify-center z-50">
-          <div className="px-6 py-3 rounded-full font-bold text-lg shadow-lg" style={{backgroundColor: "#fda4af", color: "#005f99"}}>
+        <div style={{position: "fixed", top: "24px", left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 50}}>
+          <div style={{backgroundColor: "#fda4af", color: "#005f99", padding: "12px 24px", borderRadius: "999px", fontWeight: "bold", fontSize: "18px", boxShadow: "0 4px 20px rgba(0,0,0,0.2)"}}>
             ¡Es un match con {match.nombre}! ❤️
           </div>
         </div>
       )}
 
-      {/* Tarjeta */}
-      <div className="relative w-72 h-96">
+      {/* Tarjeta con bordes redondeados */}
+      <div style={{width: "288px", height: "384px", position: "relative"}}>
         {indice >= perfilesPrueba.length ? (
-          <div className="w-full h-full rounded-2xl flex items-center justify-center" style={{backgroundColor: "#005f99"}}>
-            <p className="text-center p-4" style={{color: "#e0f7ff"}}>No hay más perfiles en tu gimnasio por ahora 😊</p>
+          <div style={{
+            width: "100%", height: "100%",
+            backgroundColor: "#005f99",
+            borderRadius: "32px",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.3)"
+          }}>
+            <p style={{color: "#e0f7ff", textAlign: "center", padding: "16px"}}>No hay más perfiles en tu gimnasio por ahora 😊</p>
           </div>
         ) : (
-          <div className="w-72 h-96 rounded-2xl shadow-xl flex flex-col items-center justify-center p-6" style={{backgroundColor: "#005f99"}}>
-            <div className="text-8xl mb-4">{perfil.foto}</div>
-            <h2 className="text-2xl font-bold" style={{color: "white"}}>{perfil.nombre}, {perfil.edad}</h2>
-            <p className="font-medium mt-1" style={{color: "#fda4af"}}>{perfil.gimnasio}</p>
-            <p className="mt-2 text-sm" style={{color: "#e0f7ff"}}>{perfil.objetivo}</p>
-            <p className="text-xs mt-1" style={{color: "#bae6fd"}}>{perfil.horario}</p>
+          <div style={{
+            width: "288px",
+            height: "384px",
+            backgroundColor: "#005f99",
+            borderRadius: "32px",
+            boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
+            display: "flex",
+            flexDirection: "column",
+            alignItems: "center",
+            justifyContent: "center",
+            padding: "24px"
+          }}>
+            <div style={{fontSize: "80px", marginBottom: "16px"}}>{perfil.foto}</div>
+            <h2 style={{fontSize: "24px", fontWeight: "bold", color: "white", margin: "0"}}>{perfil.nombre}, {perfil.edad}</h2>
+            <p style={{color: "#fda4af", fontWeight: "500", margin: "4px 0 0"}}>{perfil.gimnasio}</p>
+            <p style={{color: "#e0f7ff", fontSize: "14px", margin: "8px 0 0"}}>{perfil.objetivo}</p>
+            <p style={{color: "#bae6fd", fontSize: "12px", margin: "4px 0 0"}}>{perfil.horario}</p>
           </div>
         )}
       </div>
 
       {/* Botones */}
-      <div className="flex gap-6 mt-8">
+      <div style={{display: "flex", gap: "24px", marginTop: "32px"}}>
         <button
           onClick={() => handleSwipe("left")}
-          className="w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition"
-          style={{backgroundColor: "#005f99", border: "none", outline: "none"}}
-        >
-          ❌
-        </button>
+          style={{
+            width: "64px", height: "64px",
+            backgroundColor: "#005f99",
+            borderRadius: "50%",
+            border: "none", outline: "none",
+            fontSize: "24px",
+            cursor: "pointer",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+          }}
+        >❌</button>
         <button
           onClick={() => handleSwipe("right")}
-          className="w-16 h-16 rounded-full flex items-center justify-center text-2xl shadow-lg transition"
-          style={{backgroundColor: "#fda4af", border: "none", outline: "none"}}
-        >
-          ❤️
-        </button>
+          style={{
+            width: "64px", height: "64px",
+            backgroundColor: "#fda4af",
+            borderRadius: "50%",
+            border: "none", outline: "none",
+            fontSize: "24px",
+            cursor: "pointer",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
+          }}
+        >❤️</button>
       </div>
-
-      {false && ultimoSwipe && (
-        <p className="text-sm mt-4" style={{color: "#e0f7ff"}}>
-          {ultimoSwipe.direction === "right" ? "❤️" : "❌"} {ultimoSwipe.nombre}
-        </p>
-      )}
 
       <Navbar />
     </div>
