@@ -34,9 +34,10 @@ export default function Login() {
     }}>
       <div style={{width: "100%", maxWidth: "400px"}}>
 
-        {/* Logo */}
+        {/* Logo texto */}
         <div style={{textAlign: "center", marginBottom: "40px"}}>
-          <p style={{marginTop: "8px", fontSize: "24px", color: "#e0f7ff", fontWeight: "bold"}}>Conecta con tu gimnasio</p>
+          <h1 style={{fontSize: "64px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
+          <p style={{marginTop: "8px", fontSize: "20px", color: "#e0f7ff"}}>Conecta con tu gimnasio</p>
         </div>
 
         {/* Card */}
