@@ -37,7 +37,7 @@ export default function Login() {
         {/* Logo */}
         <div style={{textAlign: "center", marginBottom: "40px"}}>
           <img src="/icon-512.png" alt="GYMatch" style={{width: "120px", height: "120px", margin: "0 auto 16px", borderRadius: "24px"}}/>
-          <p style={{marginTop: "8px", fontSize: "18px", color: "#e0f7ff"}}>Conecta con tu gimnasio</p>
+          <p style={{marginTop: "8px", fontSize: "24px", color: "#e0f7ff", fontWeight: "bold"}}>Conecta con tu gimnasio</p>
         </div>
 
         {/* Card */}
