@@ -34,7 +34,7 @@ export default function Swipe() {
       alignItems: "center",
       justifyContent: "center",
       padding: "16px",
-      paddingBottom: "120px"
+      paddingBottom: "160px"
     }}>
 
       {/* Header */}
