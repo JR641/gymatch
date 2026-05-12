@@ -12,46 +12,53 @@ export default function Navbar() {
   }
 
   return (
-    <div className="fixed bottom-0 left-0 right-0 px-6 py-5" style={{backgroundColor: "#0096c7"}}>
-      <div className="flex justify-around items-center max-w-md mx-auto">
+    <div style={{
+      position: "fixed",
+      bottom: "24px",
+      left: "50%",
+      transform: "translateX(-50%)",
+      backgroundColor: "#0096c7",
+      borderRadius: "999px",
+      padding: "12px 32px",
+      display: "flex",
+      gap: "32px",
+      alignItems: "center",
+      boxShadow: "0 8px 32px rgba(0,0,0,0.3)",
+      zIndex: 100
+    }}>
 
-        <button
-          onClick={() => navigate("/swipe")}
-          style={{background: "none", border: "none", color: location.pathname === "/swipe" ? "#fda4af" : "white"}}
-          className="flex flex-col items-center gap-1 transition"
-        >
-          <span className="text-3xl">🔥</span>
-          <span className="text-sm">Descubrir</span>
-        </button>
+      <button
+        onClick={() => navigate("/swipe")}
+        style={{background: "none", border: "none", color: location.pathname === "/swipe" ? "#fda4af" : "white", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "4px"}}
+      >
+        <span style={{fontSize: "24px"}}>🔥</span>
+        <span style={{fontSize: "11px", fontWeight: "600"}}>Descubrir</span>
+      </button>
 
-        <button
-          onClick={() => navigate("/matches")}
-          style={{background: "none", border: "none", color: location.pathname === "/matches" ? "#fda4af" : "white"}}
-          className="flex flex-col items-center gap-1 transition"
-        >
-          <span className="text-3xl">❤️</span>
-          <span className="text-sm">Matches</span>
-        </button>
+      <button
+        onClick={() => navigate("/matches")}
+        style={{background: "none", border: "none", color: location.pathname === "/matches" ? "#fda4af" : "white", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "4px"}}
+      >
+        <span style={{fontSize: "24px"}}>❤️</span>
+        <span style={{fontSize: "11px", fontWeight: "600"}}>Matches</span>
+      </button>
 
-        <button
-          onClick={() => navigate("/chat")}
-          style={{background: "none", border: "none", color: location.pathname === "/chat" ? "#fda4af" : "white"}}
-          className="flex flex-col items-center gap-1 transition"
-        >
-          <span className="text-3xl">💬</span>
-          <span className="text-sm">Chat</span>
-        </button>
+      <button
+        onClick={() => navigate("/chat")}
+        style={{background: "none", border: "none", color: location.pathname === "/chat" ? "#fda4af" : "white", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "4px"}}
+      >
+        <span style={{fontSize: "24px"}}>💬</span>
+        <span style={{fontSize: "11px", fontWeight: "600"}}>Chat</span>
+      </button>
 
-        <button
-          onClick={handleLogout}
-          style={{background: "none", border: "none", color: "white"}}
-          className="flex flex-col items-center gap-1 transition"
-        >
-          <span className="text-3xl">🚪</span>
-          <span className="text-sm">Salir</span>
-        </button>
+      <button
+        onClick={handleLogout}
+        style={{background: "none", border: "none", color: "white", cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center", gap: "4px"}}
+      >
+        <span style={{fontSize: "24px"}}>🚪</span>
+        <span style={{fontSize: "11px", fontWeight: "600"}}>Salir</span>
+      </button>
 
-      </div>
     </div>
   )
 }
