@@ -34,26 +34,26 @@ export default function Swipe() {
       alignItems: "center",
       justifyContent: "center",
       padding: "16px",
-      paddingBottom: "100px"
+      paddingBottom: "120px"
     }}>
 
       {/* Header */}
-      <div style={{textAlign: "center", marginBottom: "24px"}}>
-        <h1 style={{fontSize: "32px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
-        <p style={{fontSize: "14px", color: "#e0f7ff", margin: "4px 0 0"}}>Personas en tu gimnasio</p>
+      <div style={{textAlign: "center", marginBottom: "16px"}}>
+        <h1 style={{fontSize: "28px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
+        <p style={{fontSize: "13px", color: "#e0f7ff", margin: "4px 0 0"}}>Personas en tu gimnasio</p>
       </div>
 
       {/* Notificacion match */}
       {match && (
         <div style={{position: "fixed", top: "24px", left: 0, right: 0, display: "flex", justifyContent: "center", zIndex: 50}}>
-          <div style={{backgroundColor: "#fda4af", color: "#005f99", padding: "12px 24px", borderRadius: "999px", fontWeight: "bold", fontSize: "18px", boxShadow: "0 4px 20px rgba(0,0,0,0.2)"}}>
+          <div style={{backgroundColor: "#fda4af", color: "#005f99", padding: "12px 24px", borderRadius: "999px", fontWeight: "bold", fontSize: "16px", boxShadow: "0 4px 20px rgba(0,0,0,0.2)"}}>
             ¡Es un match con {match.nombre}! ❤️
           </div>
         </div>
       )}
 
-      {/* Tarjeta con bordes redondeados */}
-      <div style={{width: "288px", height: "384px", position: "relative"}}>
+      {/* Tarjeta */}
+      <div style={{width: "260px", height: "320px"}}>
         {indice >= perfilesPrueba.length ? (
           <div style={{
             width: "100%", height: "100%",
@@ -68,8 +68,8 @@ export default function Swipe() {
           </div>
         ) : (
           <div style={{
-            width: "288px",
-            height: "384px",
+            width: "260px",
+            height: "320px",
             backgroundColor: "#005f99",
             borderRadius: "32px",
             boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
@@ -77,27 +77,27 @@ export default function Swipe() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "24px"
+            padding: "20px"
           }}>
-            <div style={{fontSize: "80px", marginBottom: "16px"}}>{perfil.foto}</div>
-            <h2 style={{fontSize: "24px", fontWeight: "bold", color: "white", margin: "0"}}>{perfil.nombre}, {perfil.edad}</h2>
-            <p style={{color: "#fda4af", fontWeight: "500", margin: "4px 0 0"}}>{perfil.gimnasio}</p>
-            <p style={{color: "#e0f7ff", fontSize: "14px", margin: "8px 0 0"}}>{perfil.objetivo}</p>
+            <div style={{fontSize: "64px", marginBottom: "12px"}}>{perfil.foto}</div>
+            <h2 style={{fontSize: "20px", fontWeight: "bold", color: "white", margin: "0"}}>{perfil.nombre}, {perfil.edad}</h2>
+            <p style={{color: "#fda4af", fontWeight: "500", margin: "4px 0 0", fontSize: "14px"}}>{perfil.gimnasio}</p>
+            <p style={{color: "#e0f7ff", fontSize: "13px", margin: "6px 0 0"}}>{perfil.objetivo}</p>
             <p style={{color: "#bae6fd", fontSize: "12px", margin: "4px 0 0"}}>{perfil.horario}</p>
           </div>
         )}
       </div>
 
       {/* Botones */}
-      <div style={{display: "flex", gap: "24px", marginTop: "32px"}}>
+      <div style={{display: "flex", gap: "24px", marginTop: "24px"}}>
         <button
           onClick={() => handleSwipe("left")}
           style={{
-            width: "64px", height: "64px",
+            width: "56px", height: "56px",
             backgroundColor: "#005f99",
             borderRadius: "50%",
             border: "none", outline: "none",
-            fontSize: "24px",
+            fontSize: "22px",
             cursor: "pointer",
             boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
           }}
@@ -105,11 +105,11 @@ export default function Swipe() {
         <button
           onClick={() => handleSwipe("right")}
           style={{
-            width: "64px", height: "64px",
+            width: "56px", height: "56px",
             backgroundColor: "#fda4af",
             borderRadius: "50%",
             border: "none", outline: "none",
-            fontSize: "24px",
+            fontSize: "22px",
             cursor: "pointer",
             boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
           }}

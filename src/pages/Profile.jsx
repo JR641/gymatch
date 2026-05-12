@@ -37,17 +37,9 @@ export default function Profile() {
       setError("Por favor rellena todos los campos")
       return
     }
-
     try {
       await setDoc(doc(db, "usuarios", auth.currentUser.uid), {
-        nombre,
-        edad,
-        gimnasio,
-        objetivo,
-        horario,
-        genero,
-        orientacion,
-        buscando,
+        nombre, edad, gimnasio, objetivo, horario, genero, orientacion, buscando,
         uid: auth.currentUser.uid,
         email: auth.currentUser.email,
         foto: foto || "",
@@ -59,138 +51,114 @@ export default function Profile() {
     }
   }
 
+  const BotonesGrid = ({ opciones, valor, setValor }) => (
+    <div style={{display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px"}}>
+      {opciones.map((op) => (
+        <button key={op} onClick={() => setValor(op)} style={{
+          backgroundColor: valor === op ? "#fda4af" : "#005f99",
+          color: valor === op ? "#005f99" : "white",
+          border: "none", borderRadius: "16px",
+          padding: "12px", fontSize: "14px",
+          fontWeight: "600", cursor: "pointer"
+        }}>{op}</button>
+      ))}
+    </div>
+  )
+
   return (
-    <div className="min-h-screen p-6 pb-10" style={{backgroundColor: "#0077b6"}}>
-      <div className="max-w-md mx-auto">
+    <div style={{minHeight: "100vh", backgroundColor: "#0077b6", padding: "24px 16px 40px"}}>
+      <div style={{maxWidth: "400px", margin: "0 auto"}}>
 
         {/* Header */}
-        <div className="text-center mb-8">
-          <h1 className="text-3xl font-bold" style={{color: "#fda4af"}}>GYMatch</h1>
-          <p className="mt-2" style={{color: "#e0f7ff"}}>Cuéntanos sobre ti</p>
+        <div style={{textAlign: "center", marginBottom: "24px"}}>
+          <h1 style={{fontSize: "32px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
+          <p style={{color: "#e0f7ff", margin: "8px 0 0"}}>Cuéntanos sobre ti</p>
         </div>
 
-        {/* Foto de perfil */}
-        <div className="flex justify-center mb-6">
-          <label style={{cursor: "pointer"}}>
-            <div className="w-28 h-28 rounded-full flex items-center justify-center overflow-hidden" style={{backgroundColor: "#005f99"}}>
+        {/* Card principal */}
+        <div style={{backgroundColor: "#005f99", borderRadius: "32px", padding: "24px", boxShadow: "0 20px 60px rgba(0,0,0,0.3)", display: "flex", flexDirection: "column", gap: "20px"}}>
+
+          {/* Foto */}
+          <label style={{cursor: "pointer", display: "flex", flexDirection: "column", alignItems: "center"}}>
+            <div style={{
+              width: "100px", height: "100px", borderRadius: "50%",
+              backgroundColor: "#0077b6", overflow: "hidden",
+              display: "flex", alignItems: "center", justifyContent: "center"
+            }}>
               {foto
                 ? <img src={foto} alt="perfil" style={{width: "100%", height: "100%", objectFit: "cover"}}/>
-                : <span className="text-5xl">📷</span>
+                : <span style={{fontSize: "40px"}}>📷</span>
               }
             </div>
-            <p className="text-center text-sm mt-2" style={{color: "#e0f7ff"}}>Toca para añadir foto</p>
+            <p style={{color: "#e0f7ff", fontSize: "14px", margin: "8px 0 0"}}>Toca para añadir foto</p>
             <input type="file" accept="image/*" onChange={handleFoto} style={{display: "none"}}/>
           </label>
-        </div>
 
-        {/* Formulario */}
-        <div className="space-y-4">
-          <input
-            type="text"
-            placeholder="Tu nombre"
-            value={nombre}
+          {/* Inputs */}
+          <input type="text" placeholder="Tu nombre" value={nombre}
             onChange={(e) => setNombre(e.target.value)}
-            className="w-full text-gray-800 rounded-2xl p-4 outline-none placeholder-gray-400"
-            style={{backgroundColor: "white"}}
+            style={{width: "100%", backgroundColor: "white", color: "#1f2937", borderRadius: "16px", padding: "16px", border: "none", outline: "none", fontSize: "16px", boxSizing: "border-box"}}
           />
-          <input
-            type="number"
-            placeholder="Tu edad"
-            value={edad}
+          <input type="number" placeholder="Tu edad" value={edad}
             onChange={(e) => setEdad(e.target.value)}
-            className="w-full text-gray-800 rounded-2xl p-4 outline-none placeholder-gray-400"
-            style={{backgroundColor: "white"}}
+            style={{width: "100%", backgroundColor: "white", color: "#1f2937", borderRadius: "16px", padding: "16px", border: "none", outline: "none", fontSize: "16px", boxSizing: "border-box"}}
           />
-          <input
-            type="text"
-            placeholder="¿A qué gimnasio vas?"
-            value={gimnasio}
+          <input type="text" placeholder="¿A qué gimnasio vas?" value={gimnasio}
             onChange={(e) => setGimnasio(e.target.value)}
-            className="w-full text-gray-800 rounded-2xl p-4 outline-none placeholder-gray-400"
-            style={{backgroundColor: "white"}}
+            style={{width: "100%", backgroundColor: "white", color: "#1f2937", borderRadius: "16px", padding: "16px", border: "none", outline: "none", fontSize: "16px", boxSizing: "border-box"}}
           />
 
           {/* Género */}
           <div>
-            <p className="mb-2" style={{color: "#e0f7ff"}}>¿Cuál es tu género?</p>
-            <div className="grid grid-cols-2 gap-2">
-              {generos.map((g) => (
-                <button key={g} onClick={() => setGenero(g)}
-                  style={{backgroundColor: genero === g ? "#fda4af" : "#005f99", color: genero === g ? "#005f99" : "white", border: "none"}}
-                  className="p-3 rounded-xl text-sm font-medium transition">
-                  {g}
-                </button>
-              ))}
-            </div>
+            <p style={{color: "#e0f7ff", marginBottom: "8px", fontWeight: "600"}}>¿Cuál es tu género?</p>
+            <BotonesGrid opciones={generos} valor={genero} setValor={setGenero}/>
           </div>
 
           {/* Orientación */}
           <div>
-            <p className="mb-2" style={{color: "#e0f7ff"}}>¿Cuál es tu orientación sexual?</p>
-            <div className="grid grid-cols-2 gap-2">
-              {orientaciones.map((o) => (
-                <button key={o} onClick={() => setOrientacion(o)}
-                  style={{backgroundColor: orientacion === o ? "#fda4af" : "#005f99", color: orientacion === o ? "#005f99" : "white", border: "none"}}
-                  className="p-3 rounded-xl text-sm font-medium transition">
-                  {o}
-                </button>
-              ))}
-            </div>
+            <p style={{color: "#e0f7ff", marginBottom: "8px", fontWeight: "600"}}>¿Cuál es tu orientación sexual?</p>
+            <BotonesGrid opciones={orientaciones} valor={orientacion} setValor={setOrientacion}/>
           </div>
 
           {/* Qué busca */}
           <div>
-            <p className="mb-2" style={{color: "#e0f7ff"}}>¿Qué estás buscando?</p>
-            <div className="grid grid-cols-2 gap-2">
-              {buscandoOpciones.map((b) => (
-                <button key={b} onClick={() => setBuscando(b)}
-                  style={{backgroundColor: buscando === b ? "#fda4af" : "#005f99", color: buscando === b ? "#005f99" : "white", border: "none"}}
-                  className="p-3 rounded-xl text-sm font-medium transition">
-                  {b}
-                </button>
-              ))}
-            </div>
+            <p style={{color: "#e0f7ff", marginBottom: "8px", fontWeight: "600"}}>¿Qué estás buscando?</p>
+            <BotonesGrid opciones={buscandoOpciones} valor={buscando} setValor={setBuscando}/>
           </div>
 
           {/* Objetivo */}
           <div>
-            <p className="mb-2" style={{color: "#e0f7ff"}}>¿Cuál es tu objetivo?</p>
-            <div className="grid grid-cols-2 gap-2">
-              {objetivos.map((obj) => (
-                <button key={obj} onClick={() => setObjetivo(obj)}
-                  style={{backgroundColor: objetivo === obj ? "#fda4af" : "#005f99", color: objetivo === obj ? "#005f99" : "white", border: "none"}}
-                  className="p-3 rounded-xl text-sm font-medium transition">
-                  {obj}
-                </button>
-              ))}
-            </div>
+            <p style={{color: "#e0f7ff", marginBottom: "8px", fontWeight: "600"}}>¿Cuál es tu objetivo?</p>
+            <BotonesGrid opciones={objetivos} valor={objetivo} setValor={setObjetivo}/>
           </div>
 
           {/* Horario */}
           <div>
-            <p className="mb-2" style={{color: "#e0f7ff"}}>¿Cuándo sueles ir?</p>
-            <div className="space-y-2">
+            <p style={{color: "#e0f7ff", marginBottom: "8px", fontWeight: "600"}}>¿Cuándo sueles ir?</p>
+            <div style={{display: "flex", flexDirection: "column", gap: "8px"}}>
               {horarios.map((h) => (
-                <button key={h} onClick={() => setHorario(h)}
-                  style={{backgroundColor: horario === h ? "#fda4af" : "#005f99", color: horario === h ? "#005f99" : "white", border: "none"}}
-                  className="w-full p-3 rounded-xl text-sm font-medium transition">
-                  {h}
-                </button>
+                <button key={h} onClick={() => setHorario(h)} style={{
+                  backgroundColor: horario === h ? "#fda4af" : "#0077b6",
+                  color: horario === h ? "#005f99" : "white",
+                  border: "none", borderRadius: "16px",
+                  padding: "12px", fontSize: "14px",
+                  fontWeight: "600", cursor: "pointer"
+                }}>{h}</button>
               ))}
             </div>
           </div>
 
-          {error && <p style={{color: "white"}} className="text-sm">{error}</p>}
+          {error && <p style={{color: "white", fontSize: "14px", margin: "0"}}>{error}</p>}
 
-          <button
-            onClick={handleGuardar}
-            className="w-full font-bold py-4 rounded-2xl transition text-lg"
-            style={{backgroundColor: "#fda4af", color: "#005f99", border: "none"}}
-          >
+          <button onClick={handleGuardar} style={{
+            width: "100%", backgroundColor: "#fda4af", color: "#005f99",
+            fontWeight: "bold", padding: "16px", borderRadius: "16px",
+            border: "none", fontSize: "18px", cursor: "pointer"
+          }}>
             Guardar perfil
           </button>
-        </div>
 
+        </div>
       </div>
     </div>
   )
