@@ -17,7 +17,7 @@ export default function Swipe() {
   const perfil = perfilesPrueba[indice]
 
   const handleSwipe = (direction) => {
-    setUltimoSwipe({ direction, nombre: perfil.nombre })
+    setUltimoSwipe({ direction, nombre: perfil?.nombre })
     if (direction === "right") {
       setMatch(perfil)
       setTimeout(() => setMatch(null), 3000)
@@ -32,15 +32,16 @@ export default function Swipe() {
       display: "flex",
       flexDirection: "column",
       alignItems: "center",
-      justifyContent: "center",
-      padding: "16px",
-      paddingBottom: "160px"
+      paddingTop: "40px",
+      paddingBottom: "100px",
+      paddingLeft: "16px",
+      paddingRight: "16px",
     }}>
 
       {/* Header */}
-      <div style={{textAlign: "center", marginBottom: "16px"}}>
-        <h1 style={{fontSize: "28px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
-        <p style={{fontSize: "13px", color: "#e0f7ff", margin: "4px 0 0"}}>Personas en tu gimnasio</p>
+      <div style={{textAlign: "center", marginBottom: "24px"}}>
+        <h1 style={{fontSize: "32px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
+        <p style={{fontSize: "14px", color: "#e0f7ff", margin: "6px 0 0"}}>Personas en tu gimnasio</p>
       </div>
 
       {/* Notificacion match */}
@@ -53,7 +54,7 @@ export default function Swipe() {
       )}
 
       {/* Tarjeta */}
-      <div style={{width: "260px", height: "320px"}}>
+      <div style={{width: "100%", maxWidth: "340px", height: "420px", marginBottom: "32px"}}>
         {indice >= perfilesPrueba.length ? (
           <div style={{
             width: "100%", height: "100%",
@@ -64,12 +65,12 @@ export default function Swipe() {
             justifyContent: "center",
             boxShadow: "0 20px 60px rgba(0,0,0,0.3)"
           }}>
-            <p style={{color: "#e0f7ff", textAlign: "center", padding: "16px"}}>No hay más perfiles en tu gimnasio por ahora 😊</p>
+            <p style={{color: "#e0f7ff", textAlign: "center", padding: "24px", fontSize: "16px"}}>No hay más perfiles en tu gimnasio por ahora 😊</p>
           </div>
         ) : (
           <div style={{
-            width: "260px",
-            height: "320px",
+            width: "100%",
+            height: "420px",
             backgroundColor: "#005f99",
             borderRadius: "32px",
             boxShadow: "0 20px 60px rgba(0,0,0,0.3)",
@@ -77,27 +78,28 @@ export default function Swipe() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
-            padding: "20px"
+            padding: "32px",
+            boxSizing: "border-box"
           }}>
-            <div style={{fontSize: "64px", marginBottom: "12px"}}>{perfil.foto}</div>
-            <h2 style={{fontSize: "20px", fontWeight: "bold", color: "white", margin: "0"}}>{perfil.nombre}, {perfil.edad}</h2>
-            <p style={{color: "#fda4af", fontWeight: "500", margin: "4px 0 0", fontSize: "14px"}}>{perfil.gimnasio}</p>
-            <p style={{color: "#e0f7ff", fontSize: "13px", margin: "6px 0 0"}}>{perfil.objetivo}</p>
-            <p style={{color: "#bae6fd", fontSize: "12px", margin: "4px 0 0"}}>{perfil.horario}</p>
+            <div style={{fontSize: "80px", marginBottom: "20px"}}>{perfil.foto}</div>
+            <h2 style={{fontSize: "26px", fontWeight: "bold", color: "white", margin: "0"}}>{perfil.nombre}, {perfil.edad}</h2>
+            <p style={{color: "#fda4af", fontWeight: "600", margin: "8px 0 0", fontSize: "16px"}}>{perfil.gimnasio}</p>
+            <p style={{color: "#e0f7ff", fontSize: "14px", margin: "10px 0 0"}}>{perfil.objetivo}</p>
+            <p style={{color: "#bae6fd", fontSize: "13px", margin: "6px 0 0"}}>{perfil.horario}</p>
           </div>
         )}
       </div>
 
       {/* Botones */}
-      <div style={{display: "flex", gap: "24px", marginTop: "24px"}}>
+      <div style={{display: "flex", gap: "40px", alignItems: "center"}}>
         <button
           onClick={() => handleSwipe("left")}
           style={{
-            width: "56px", height: "56px",
+            width: "64px", height: "64px",
             backgroundColor: "#005f99",
             borderRadius: "50%",
             border: "none", outline: "none",
-            fontSize: "22px",
+            fontSize: "26px",
             cursor: "pointer",
             boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
           }}
@@ -105,11 +107,11 @@ export default function Swipe() {
         <button
           onClick={() => handleSwipe("right")}
           style={{
-            width: "56px", height: "56px",
+            width: "64px", height: "64px",
             backgroundColor: "#fda4af",
             borderRadius: "50%",
             border: "none", outline: "none",
-            fontSize: "22px",
+            fontSize: "26px",
             cursor: "pointer",
             boxShadow: "0 4px 20px rgba(0,0,0,0.2)"
           }}
