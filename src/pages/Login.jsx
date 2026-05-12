@@ -36,8 +36,7 @@ export default function Login() {
 
         {/* Logo */}
         <div style={{textAlign: "center", marginBottom: "40px"}}>
-          <img src="/icon-512.png" alt="GYMatch" style={{width: "100px", height: "100px", margin: "0 auto 16px", borderRadius: "20px"}}/>
-          <h1 style={{fontSize: "48px", fontWeight: "900", color: "#fda4af", margin: "0"}}>GYMatch</h1>
+          <img src="/icon-512.png" alt="GYMatch" style={{width: "120px", height: "120px", margin: "0 auto 16px", borderRadius: "24px"}}/>
           <p style={{marginTop: "8px", fontSize: "18px", color: "#e0f7ff"}}>Conecta con tu gimnasio</p>
         </div>
 
